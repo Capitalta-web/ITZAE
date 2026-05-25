@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Itzaé Tulum | Inversión Inmobiliaria 100% Autofinanciada en La Veleta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --verde:   #1C3A2E;
+    --arena:   #C9A96E;
+    --crema:   #F5F0E8;
+    --blanco:  #FFFFFF;
+    --carbon:  #1A1A1A;
+    --gris:    #6B6B6B;
+    --verde-lt:#2A5040;
+    --arena-lt:#E8C98A;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--crema); color: var(--carbon); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled { background: rgba(28,58,46,0.96); backdrop-filter: blur(14px); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500;
+    color: var(--blanco); letter-spacing: 0.18em; text-decoration: none;
+  }
+  .nav-logo span { color: var(--arena); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--arena); }
+  .nav-cta { background: var(--arena); color: var(--verde) !important; padding: 0.6rem 1.4rem; border-radius: 2px; font-weight: 500 !important; }
+  .nav-cta:hover { background: var(--arena-lt) !important; }
+
+  /* HERO */
+  #hero { position: relative; height: 100vh; min-height: 680px; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(28,58,46,0.80) 0%, rgba(28,58,46,0.45) 55%, rgba(201,169,110,0.20) 100%);
+  }
+  /* SVG scene hero — alberca y selva tropical */
+  .hero-scene {
+    position: absolute; inset: 0; z-index: -1;
+    overflow: hidden;
+  }
+  .hero-scene img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .hero-scene::after {
+    content:''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 280px;
+    background: linear-gradient(to top, var(--crema) 0%, transparent 100%);
+    z-index: 2;
+  }
+  .hero-content {
+    position: relative; z-index: 3;
+    padding: 0 5rem 7rem; max-width: 820px;
+  }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--arena); font-weight: 500; margin-bottom: 1.4rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-label::before { content:''; width: 2.5rem; height: 1px; background: var(--arena); }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.4rem); font-weight: 300; line-height: 1.06;
+    color: var(--blanco);
+    opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-h1 em { font-style: italic; color: var(--arena); }
+  .hero-sub {
+    margin-top: 1.6rem; font-size: 1.05rem; line-height: 1.75;
+    color: rgba(255,255,255,0.80); max-width: 540px;
+    opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .hero-chips {
+    display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem;
+    opacity: 0; animation: fadeUp 0.9s 0.75s forwards;
+  }
+  .chip {
+    font-size: 0.74rem; letter-spacing: 0.06em;
+    padding: 0.4rem 1rem; border: 1px solid rgba(201,169,110,0.45);
+    color: rgba(255,255,255,0.85); border-radius: 2px;
+  }
+  .hero-cta-row {
+    display: flex; align-items: center; gap: 2rem; margin-top: 2.6rem;
+    opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+  }
+  .btn-primary {
+    background: var(--arena); color: var(--verde);
+    padding: 0.95rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.25s, transform 0.2s; display: inline-block;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--arena-lt); transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 0.82rem; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--arena); }
+  .btn-ghost .arrow { transition: transform 0.2s; }
+  .btn-ghost:hover .arrow { transform: translateX(5px); }
+
+  /* STATS */
+  #stats { background: var(--verde); padding: 3.5rem 5rem; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.10); }
+  .stat-item { background: var(--verde); padding: 2.4rem 2rem; text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem,4vw,3.8rem); font-weight: 300; color: var(--arena); line-height: 1;
+  }
+  .stat-unit { font-size: 1.6rem; color: var(--arena-lt); }
+  .stat-label { font-size: 0.74rem; letter-spacing: 0.09em; color: rgba(255,255,255,0.6); margin-top: 0.6rem; text-transform: uppercase; }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 5rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--arena); font-weight: 500;
+    display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;
+  }
+  .section-label::before { content:''; width: 2rem; height: 1px; background: var(--arena); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 300; line-height: 1.15; color: var(--verde);
+  }
+  .section-title em { font-style: italic; color: var(--arena); }
+  .divider { width: 3rem; height: 1px; background: var(--arena); margin: 1.8rem 0; }
+  .body-text { font-size: 1rem; line-height: 1.8; color: var(--gris); max-width: 560px; }
+
+  /* IMAGE PLACEHOLDERS — SVG inline con escenas temáticas */
+  .img-placeholder {
+    width: 100%; display: block; border-radius: 2px;
+    overflow: hidden; position: relative;
+  }
+  .img-placeholder svg { display: block; width: 100%; height: 100%; }
+
+  /* AUTOFINANCIAMIENTO */
+  #auto { background: var(--crema); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .auto-visual { position: relative; }
+  .auto-badge {
+    position: absolute; bottom: -2rem; right: -2rem;
+    background: var(--verde); width: 170px; height: 170px;
+    border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; z-index: 2;
+  }
+  .auto-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--arena); line-height: 1; }
+  .auto-badge-label { font-size: 0.64rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.75); text-transform: uppercase; margin-top: 0.3rem; }
+  .auto-pillars { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
+  .pillar { display: grid; grid-template-columns: 3rem 1fr; gap: 1.2rem; align-items: start; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--arena); line-height: 1; padding-top: 0.1rem; }
+  .pillar-title { font-size: 0.84rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--verde); margin-bottom: 0.4rem; }
+  .pillar-text { font-size: 0.92rem; line-height: 1.7; color: var(--gris); }
+
+  /* UBICACIÓN */
+  #ubicacion { background: var(--verde); display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+  #ubicacion .section-title { color: var(--blanco); }
+  #ubicacion .body-text { color: rgba(255,255,255,0.68); max-width: none; }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.10); margin-top: 2.5rem; overflow: hidden; border-radius: 2px; }
+  .loc-item { background: var(--verde-lt); padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; }
+  .loc-item:hover { background: rgba(255,255,255,0.07); }
+  .loc-time { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300; color: var(--arena); min-width: 3.5rem; line-height: 1; }
+  .loc-min { font-size: 0.68rem; color: var(--arena-lt); letter-spacing: 0.05em; display: block; }
+  .loc-place { font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+  .map-box { width: 100%; aspect-ratio: 5/6; border-radius: 2px; overflow: hidden; }
+  .map-box iframe { width: 100%; height: 100%; border: none; filter: saturate(0.4) brightness(0.75) hue-rotate(20deg); }
+
+  /* TIPOLOGÍAS */
+  #tipologias { background: var(--crema); }
+  .tipo-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .tipo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .tipo-card { background: var(--blanco); border-radius: 2px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .tipo-card:hover { transform: translateY(-6px); box-shadow: 0 22px 55px rgba(28,58,46,0.14); }
+  .tipo-body { padding: 1.4rem 1.6rem 1.8rem; }
+  .tipo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 400; color: var(--verde); margin-bottom: 0.25rem; }
+  .tipo-specs { font-size: 0.74rem; letter-spacing: 0.06em; color: var(--arena); text-transform: uppercase; margin-bottom: 0.8rem; }
+  .tipo-desc { font-size: 0.88rem; line-height: 1.65; color: var(--gris); margin-bottom: 1.2rem; }
+  .tipo-price { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--verde); border-top: 1px solid rgba(28,58,46,0.1); padding-top: 1rem; }
+  .tipo-price span { font-size: 0.74rem; color: var(--gris); font-family: 'DM Sans', sans-serif; }
+  .tipo-card.featured { grid-column: span 2; background: var(--verde); }
+  .tipo-card.featured .tipo-name { color: var(--blanco); }
+  .tipo-card.featured .tipo-specs { color: var(--arena-lt); }
+  .tipo-card.featured .tipo-desc { color: rgba(255,255,255,0.68); }
+  .tipo-card.featured .tipo-price { color: var(--arena); border-color: rgba(255,255,255,0.15); }
+  .tipo-card.featured .tipo-price span { color: rgba(255,255,255,0.45); }
+
+  /* DATOS */
+  #datos { background: #0f1a14; position: relative; overflow: hidden; }
+  #datos::before {
+    content:''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 15% 80%, rgba(28,58,46,0.5) 0%, transparent 60%);
+  }
+  .datos-inner { position: relative; z-index: 2; }
+  #datos .section-title { color: var(--blanco); }
+  .datos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(255,255,255,0.05); margin-top: 3rem; }
+  .dato-card { background: rgba(255,255,255,0.03); padding: 2.5rem 2rem; transition: background 0.2s; }
+  .dato-card:hover { background: rgba(255,255,255,0.07); }
+  .dato-icon { font-size: 1.4rem; margin-bottom: 1.2rem; color: var(--arena); }
+  .dato-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 300; color: var(--arena); line-height: 1; margin-bottom: 0.4rem; }
+  .dato-title { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.9); font-weight: 500; margin-bottom: 0.8rem; }
+  .dato-text { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.48); }
+  .dato-hl { color: rgba(255,255,255,0.85); }
+
+  /* AVANCE */
+  #avance { background: var(--crema); display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: center; }
+  .avance-img-wrap { position: relative; }
+  .avance-overlay {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: var(--verde); padding: 1.2rem 1.6rem; border-radius: 2px; z-index: 2;
+  }
+  .avance-pct { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--arena); line-height: 1; }
+  .avance-lbl { font-size: 0.66rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-top: 0.2rem; }
+  .progress-bar-wrap { margin-top: 2.5rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gris); margin-bottom: 0.5rem; }
+  .progress-bar { height: 3px; background: rgba(28,58,46,0.12); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--verde), var(--arena)); animation: fillBar 1.8s 0.3s ease-out both; }
+  @keyframes fillBar { from { width: 0; } }
+
+  /* FILOSOFÍA */
+  #filosofia { background: var(--blanco); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .quote-block { padding: 2rem 2.2rem; background: var(--crema); border-left: 3px solid var(--arena); margin-top: 2.5rem; border-radius: 0 2px 2px 0; }
+  .quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 0.55; color: var(--arena); opacity: 0.35; float: left; margin-right: 0.4rem; margin-top: 0.9rem; }
+  .quote-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; line-height: 1.75; color: var(--carbon); }
+  .quote-source { font-size: 0.78rem; color: var(--gris); margin-top: 1rem; }
+  .philosophy-points { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 1rem; }
+  .phil-item { display: flex; gap: 1.2rem; align-items: start; }
+  .phil-dot { width: 7px; height: 7px; background: var(--arena); border-radius: 50%; margin-top: 0.48rem; flex-shrink: 0; }
+  .phil-title { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--verde); margin-bottom: 0.3rem; }
+  .phil-text { font-size: 0.9rem; line-height: 1.7; color: var(--gris); }
+
+  /* CISA STRIP */
+  #cisa { background: var(--crema); display: flex; align-items: center; gap: 4rem; padding: 3rem 5rem; border-top: 1px solid rgba(28,58,46,0.1); border-bottom: 1px solid rgba(28,58,46,0.1); }
+  .cisa-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--verde); letter-spacing: 0.2em; white-space: nowrap; }
+  .cisa-div { width: 1px; height: 4rem; background: rgba(28,58,46,0.2); flex-shrink: 0; }
+  .cisa-text { font-size: 0.92rem; line-height: 1.75; color: var(--gris); }
+  .cisa-link { color: var(--verde); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--arena); }
+
+  /* CTA FINAL */
+  #contacto { background: var(--verde); padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; overflow: hidden; }
+  #contacto::before { content:''; position: absolute; top: -120px; right: -120px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%); }
+  #contacto .section-title { color: var(--blanco); }
+  #contacto .body-text { color: rgba(255,255,255,0.65); max-width: none; }
+  .contacto-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 4px; padding: 2.5rem; position: relative; z-index: 2; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--blanco); margin-bottom: 1.8rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+  .form-group input, .form-group select {
+    width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 2px; padding: 0.75rem 1rem; color: var(--blanco);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+    transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  .form-group input::placeholder { color: rgba(255,255,255,0.28); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--arena); }
+  .form-group select option { background: var(--verde); color: var(--blanco); }
+  .form-submit { width: 100%; background: var(--arena); color: var(--verde); border: none; padding: 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; cursor: pointer; margin-top: 0.5rem; transition: background 0.2s; }
+  .form-submit:hover { background: var(--arena-lt); }
+  .form-note { font-size: 0.72rem; color: rgba(255,255,255,0.38); text-align: center; margin-top: 0.8rem; }
+  .benefits-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .benefit-item { display: flex; align-items: flex-start; gap: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.72); }
+  .benefit-icon { color: var(--arena); font-size: 1rem; margin-top: 0.05rem; }
+
+  /* FOOTER */
+  footer { background: #0c1a11; padding: 3.5rem 5rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-brand .nav-logo { display: block; margin-bottom: 1rem; }
+  .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.38); line-height: 1.7; }
+  .footer-col-title { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--arena); margin-bottom: 1.2rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--arena); }
+  .footer-contact p { font-size: 0.84rem; color: rgba(255,255,255,0.48); margin-bottom: 0.5rem; line-height: 1.5; }
+  .footer-contact a { color: rgba(255,255,255,0.48); text-decoration: none; }
+  .social-row { display: flex; gap: 1rem; margin-top: 1.3rem; }
+  .social-link { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.48); text-decoration: none; font-style: italic; font-family: 'Cormorant Garamond', serif; transition: border-color 0.2s, color 0.2s; }
+  .social-link:hover { border-color: var(--arena); color: var(--arena); }
+  .footer-bottom { background: #091009; padding: 1.2rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p, .footer-bottom a { font-size: 0.75rem; color: rgba(255,255,255,0.28); text-decoration: none; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px);} to {opacity:1;transform:none;} }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 2rem; }
+    #stats { padding: 3rem 2rem; }
+    #auto, #avance, #contacto, #filosofia, #ubicacion { grid-template-columns: 1fr; gap: 3rem; }
+    .tipo-grid { grid-template-columns: 1fr 1fr; }
+    .tipo-card.featured { grid-column: span 2; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .datos-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 2rem; }
+    .footer-bottom { padding: 1.2rem 2rem; }
+    #cisa { flex-direction: column; padding: 3rem 2rem; gap: 1.5rem; }
+    .cisa-div { display: none; }
+    .hero-content { padding: 0 2rem 4rem; }
+    .auto-badge { right: 0; }
+    .tipo-intro { grid-template-columns: 1fr; gap: 1rem; }
+  }
+  @media (max-width: 640px) {
+    .tipo-grid { grid-template-columns: 1fr; }
+    .tipo-card.featured { grid-column: span 1; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">ITZAÉ<span>·</span>TULUM</a>
+  <ul class="nav-links">
+    <li><a href="#auto">Inversión</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#tipologias">Tipologías</a></li>
+    <li><a href="#datos">Rendimientos</a></li>
+    <li><a href="#contacto" class="nav-cta">Agendar Asesoría</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-scene" style="overflow:hidden;">
+    <img src="FOTO_FACHADA_NOCTURNA.jpg" alt="Fachada Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="eager"/>
+  </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-label">La Veleta · Tulum, Quintana Roo</div>
+    <h1 class="hero-h1">Tu capital trabaja<br>en el <em>Caribe.</em></h1>
+    <p class="hero-sub">El único desarrollo 100% autofinanciado en La Veleta, diseñado para generar rendimientos reales por renta vacacional desde el primer día.</p>
+    <div class="hero-chips">
+      <span class="chip">+70% Avance de Obra</span>
+      <span class="chip">5 Tipologías</span>
+      <span class="chip">Swim-Up · Roof Garden</span>
+      <span class="chip">Desde $2.5 MDP</span>
+    </div>
+    <div class="hero-cta-row">
+      <a href="#contacto" class="btn-primary">Conocer mi rendimiento proyectado</a>
+      <a href="#tipologias" class="btn-ghost">Ver tipologías <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num">22<span class="stat-unit">%</span></div>
+      <div class="stat-label">Crecimiento en valor de propiedades · Tulum 2024</div>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-num">15<span class="stat-unit">%</span></div>
+      <div class="stat-label">ROI anual promedio · Rentas vacacionales Tulum</div>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-num">$2,100</div>
+      <div class="stat-label">Tarifa promedio por noche en La Veleta · MXN</div>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-num">+70<span class="stat-unit">%</span></div>
+      <div class="stat-label">Avance de obra verificable · Sin deuda bancaria</div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOFINANCIAMIENTO -->
+<section id="auto">
+  <div class="auto-visual reveal">
+    <!-- SVG: alberca swim-up con jardín tropical de día -->
+    <div class="img-placeholder" style="aspect-ratio:4/5;overflow:hidden;">
+      <img src="FOTO_ALBERCA_JARDIN.jpg" alt="Alberca swim-up con jardín Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+    </div>
+    <div class="auto-badge">
+      <div class="auto-badge-num">100%</div>
+      <div class="auto-badge-label">Auto­finan­ciado</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label reveal">La ventaja que importa</div>
+    <h2 class="section-title reveal">Sin deuda bancaria.<br><em>Sin riesgo</em> para tu inversión.</h2>
+    <div class="divider reveal"></div>
+    <p class="body-text reveal">En un mercado donde la mayoría de los desarrollos dependen de créditos puente y financiamiento bancario, Itzaé Tulum opera de forma diferente. El avance de obra está garantizado por el flujo real de compradores — no por condiciones del mercado financiero.</p>
+    <div class="auto-pillars">
+      <div class="pillar reveal">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Obra garantizada</div>
+          <p class="pillar-text">Sin crédito puente, no hay escenario de paralización financiera. El proyecto avanza con el capital de sus propios inversionistas.</p>
+        </div>
+      </div>
+      <div class="pillar reveal reveal-d1">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">Capital protegido</div>
+          <p class="pillar-text">Al no existir deuda de desarrolladora, ninguna institución financiera puede ejecutar o congelar el proyecto. Tu inversión está donde debe: en piedra.</p>
+        </div>
+      </div>
+      <div class="pillar reveal reveal-d2">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Precio justo</div>
+          <p class="pillar-text">Sin costos financieros trasladados al comprador. El precio refleja el valor real del inmueble — no los intereses de un crédito externo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion">
+  <div>
+    <div class="section-label reveal" style="color:var(--arena-lt)">Estrategia de ubicación</div>
+    <h2 class="section-title reveal">En el corazón de<br><em>La Veleta.</em></h2>
+    <div class="divider reveal"></div>
+    <p class="body-text reveal">La Veleta es hoy una de las zonas con mayor crecimiento de plusvalía en Tulum. Bien conectada, alta demanda de renta vacacional y en plena expansión de infraestructura comercial y turística.</p>
+    <div class="location-grid reveal">
+      <div class="loc-item"><div class="loc-time">5<span class="loc-min">min</span></div><div class="loc-place">Tulum Centro</div></div>
+      <div class="loc-item"><div class="loc-time">8<span class="loc-min">min</span></div><div class="loc-place">Playas de Tulum</div></div>
+      <div class="loc-item"><div class="loc-time">10<span class="loc-min">min</span></div><div class="loc-place">Zona Hotelera</div></div>
+      <div class="loc-item"><div class="loc-time">15<span class="loc-min">min</span></div><div class="loc-place">Zona Arqueológica</div></div>
+      <div class="loc-item"><div class="loc-time">20<span class="loc-min">min</span></div><div class="loc-place">Estación Tren Maya</div></div>
+      <div class="loc-item"><div class="loc-time">25<span class="loc-min">min</span></div><div class="loc-place">Aeropuerto Internacional</div></div>
+    </div>
+  </div>
+  <div class="map-box reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.762!2d-87.4602!3d20.2108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4fd40968b2eacf%3A0x2b00a9b3dc7b2aee!2sLa%20Veleta%2C%2077760%20Tulum%2C%20Q.R.!5e0!3m2!1ses!2smx!4v1716000000000" allowfullscreen loading="lazy" title="La Veleta Tulum"></iframe>
+  </div>
+</section>
+
+<!-- TIPOLOGÍAS -->
+<section id="tipologias">
+  <div class="tipo-intro">
+    <div>
+      <div class="section-label reveal">Catálogo de inversión</div>
+      <h2 class="section-title reveal">Cinco formas de entrar al mercado<br>más rentable del <em>Caribe.</em></h2>
+    </div>
+    <p class="body-text reveal">Diseñadas por arquitectos especializados en renta vacacional. Cada tipología maximiza la experiencia del huésped — y por lo tanto, tu tarifa por noche.</p>
+  </div>
+  <div class="tipo-grid">
+
+    <!-- CHICHEN ITZÁ featured -->
+    <div class="tipo-card featured reveal">
+      <div class="img-placeholder" style="aspect-ratio:16/7;overflow:hidden;">
+        <img src="FOTO_TIPO_CHICHEN.jpg" alt="Chichén Itzá - Penthouse Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+      </div>
+      <div class="tipo-body">
+        <div class="tipo-name">Chichén Itzá</div>
+        <div class="tipo-specs">135 m² · 2 Rec. · Penthouse · Infinity Pool · Roof Garden</div>
+        <p class="tipo-desc">La joya del proyecto. Un Penthouse con Infinity Pool y Roof Garden no es solo una propiedad — es una experiencia que los huéspedes de lujo pagan por vivir. Máximo ticket por noche, máximo prestigio patrimonial.</p>
+        <div class="tipo-price">Desde $6.8 MDP <span>/ precio de preventa</span></div>
+      </div>
+    </div>
+
+    <!-- CALAKMUL -->
+    <div class="tipo-card reveal reveal-d1">
+      <div class="img-placeholder" style="aspect-ratio:4/3;overflow:hidden;">
+        <img src="FOTO_TIPO_CALAKMUL.jpg" alt="Calakmul - Swim Up Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+      </div>
+      <div class="tipo-body">
+        <div class="tipo-name">Calakmul</div>
+        <div class="tipo-specs">65 m² · 1 Rec. · Swim Up · Jardín Privado</div>
+        <p class="tipo-desc">El Swim Up y jardín privado son los amenidades más buscados en Airbnb Tulum. Mayor tarifa por noche, mayor rendimiento.</p>
+        <div class="tipo-price">Desde $3.9 MDP <span>/ precio de preventa</span></div>
+      </div>
+    </div>
+
+    <!-- TIKAL -->
+    <div class="tipo-card reveal">
+      <div class="img-placeholder" style="aspect-ratio:4/3;overflow:hidden;">
+        <img src="FOTO_TIPO_TIKAL.jpg" alt="Tikal - Interior sala Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+      </div>
+      <div class="tipo-body">
+        <div class="tipo-name">Tikal</div>
+        <div class="tipo-specs">123 m² · 2 Rec. · Swim Up · Jardín Privado</div>
+        <p class="tipo-desc">Para grupos y familias — el segmento que paga más y se queda más tiempo. Dos recámaras con Swim Up, combinación escasa y altamente cotizada.</p>
+        <div class="tipo-price">Desde $6.1 MDP <span>/ precio de preventa</span></div>
+      </div>
+    </div>
+
+    <!-- UXMAL -->
+    <div class="tipo-card reveal reveal-d1">
+      <div class="img-placeholder" style="aspect-ratio:4/3;overflow:hidden;">
+        <img src="FOTO_TIPO_UXMAL.jpg" alt="Uxmal - Recámara Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+      </div>
+      <div class="tipo-body">
+        <div class="tipo-name">Uxmal</div>
+        <div class="tipo-specs">54 m² · 1 Rec. · Terraza</div>
+        <p class="tipo-desc">El balance perfecto entre precio de entrada y experiencia premium. Terraza diseñada para el estilo de vida caribeño, con atardecer incluido.</p>
+        <div class="tipo-price">Desde $3.1 MDP <span>/ precio de preventa</span></div>
+      </div>
+    </div>
+
+    <!-- TULUM -->
+    <div class="tipo-card reveal reveal-d2">
+      <div class="img-placeholder" style="aspect-ratio:4/3;overflow:hidden;">
+        <img src="FOTO_TIPO_TULUM.jpg" alt="Tulum - Recámara Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+      </div>
+      <div class="tipo-body">
+        <div class="tipo-name">Tulum</div>
+        <div class="tipo-specs">48 m² · 1 Rec. · Terraza</div>
+        <p class="tipo-desc">La entrada inteligente. Alta rotación, alta rentabilidad. Ideal para el inversionista que busca el mayor número de noches ocupadas al año.</p>
+        <div class="tipo-price">Desde $2.5 MDP <span>/ precio de preventa</span></div>
+      </div>
+    </div>
+
+  </div><!-- end tipo-grid -->
+</section>
+
+<!-- DATOS AIRBNB -->
+<section id="datos">
+  <div class="datos-inner">
+    <div class="section-label reveal" style="color:var(--arena)">Mercado de renta vacacional</div>
+    <h2 class="section-title reveal">Los números hablan.<br><em>Nosotros te los explicamos.</em></h2>
+    <div class="datos-grid">
+      <div class="dato-card reveal">
+        <div class="dato-icon">◈</div>
+        <div class="dato-num">$2,100</div>
+        <div class="dato-title">Tarifa promedio por noche</div>
+        <p class="dato-text">Con 12 noches al mes ocupadas, una unidad tipo Calakmul puede generar más de <span class="dato-hl">$300,000 MXN anuales</span> en ingresos brutos. Fuente: AirDNA.</p>
+      </div>
+      <div class="dato-card reveal reveal-d1">
+        <div class="dato-icon">◉</div>
+        <div class="dato-num">37%</div>
+        <div class="dato-title">La oportunidad real</div>
+        <p class="dato-text">Solo el 37% de propiedades en Tulum logran más del 50% de ocupación anual. <span class="dato-hl">Eso no es una mala noticia — es nuestra ventaja competitiva.</span> Itzaé fue diseñado para estar en ese 37%.</p>
+      </div>
+      <div class="dato-card reveal reveal-d2">
+        <div class="dato-icon">◇</div>
+        <div class="dato-num">9,000+</div>
+        <div class="dato-title">Propiedades en plataformas</div>
+        <p class="dato-text">La mayoría sin Swim Up, sin diseño para huéspedes, sin ubicación estratégica. <span class="dato-hl">Tus huéspedes no reservarían cualquier departamento. Itzaé no es cualquier departamento.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVANCE DE OBRA -->
+<section id="avance">
+  <div class="avance-img-wrap reveal">
+    <div class="img-placeholder" style="aspect-ratio:4/3;overflow:hidden;">
+    <img src="FOTO_AVANCE_OBRA.jpg" alt="Avance de obra Itzaé Tulum" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+  </div>
+    <div class="avance-overlay">
+      <div class="avance-pct">+70%</div>
+      <div class="avance-lbl">Avance de Obra</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label reveal">Certeza tangible</div>
+    <h2 class="section-title reveal">No es una promesa.<br>Es una <em>obra en pie.</em></h2>
+    <div class="divider reveal"></div>
+    <p class="body-text reveal">Itzaé Tulum supera el 70% de avance de construcción. Puedes verlo, visitarlo y verificarlo. En un mercado donde abundan las promesas, nosotros ofrecemos evidencia.</p>
+    <div class="progress-bar-wrap reveal">
+      <div class="progress-label"><span>Avance de obra</span><span>+70% completado</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:73%"></div></div>
+    </div>
+    <div class="progress-bar-wrap reveal" style="margin-top:1.2rem">
+      <div class="progress-label"><span>Unidades disponibles</span><span>Limitadas</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:38%;animation-delay:0.5s"></div></div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <a href="#contacto" class="btn-primary" style="background:var(--verde);color:var(--blanco);">Agendar visita al desarrollo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFÍA -->
+<section id="filosofia">
+  <div>
+    <div class="section-label reveal">Nuestra filosofía</div>
+    <h2 class="section-title reveal">No vendemos<br>departamentos.<br><em>Construimos negocios.</em></h2>
+    <div class="divider reveal"></div>
+    <p class="body-text reveal">Antes de hablar de precios, hacemos cinco preguntas. Porque si nuestro proyecto no es el correcto para ti, te lo decimos — y te ayudamos a encontrar el que sí lo es.</p>
+    <div class="quote-block reveal">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">Carlos gracias por tu ayuda. Qué lástima que mi presupuesto no fue suficiente para comprar en Itzaé, pero con las recomendaciones que me hiciste estoy logrando un muy buen trato con otro desarrollo. Cuando vengas a Monterrey yo invito la comida.</p>
+      <p class="quote-source">— C. Cazarín, prospecto de Itzaé Tulum<br><em>Mensaje auténtico recibido por nuestro equipo comercial.</em></p>
+    </div>
+  </div>
+  <div class="philosophy-points">
+    <div class="section-label reveal">Lo que nos diferencia</div>
+    <div class="phil-item reveal">
+      <div class="phil-dot"></div>
+      <div><div class="phil-title">Transparencia total</div>
+      <p class="phil-text">Te mostramos datos reales del mercado, incluyendo los que no te favorecen. La decisión informada es siempre la mejor decisión.</p></div>
+    </div>
+    <div class="phil-item reveal reveal-d1">
+      <div class="phil-dot"></div>
+      <div><div class="phil-title">Asesoría sin presión</div>
+      <p class="phil-text">Nuestro equipo no trabaja con urgencias artificiales. El tiempo correcto para invertir es cuando tienes toda la información.</p></div>
+    </div>
+    <div class="phil-item reveal reveal-d2">
+      <div class="phil-dot"></div>
+      <div><div class="phil-title">Rendimiento como objetivo</div>
+      <p class="phil-text">Cada decisión de diseño, ubicación y amenidades fue tomada pensando en maximizar tu ingreso por renta vacacional.</p></div>
+    </div>
+    <div class="phil-item reveal reveal-d3">
+      <div class="phil-dot"></div>
+      <div><div class="phil-title">Seguimiento post-compra</div>
+      <p class="phil-text">Acompañamos a nuestros inversionistas en el proceso de puesta en renta y operación vacacional. La relación no termina con la firma.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CISA -->
+<div id="cisa">
+  <div class="cisa-logo reveal">GRUPO CISA</div>
+  <div class="cisa-div reveal"></div>
+  <p class="cisa-text reveal"><strong>Grupo CISA</strong> es una empresa mexicana con presencia en más de 5 estados de la república, especializada en desarrollo e inversión inmobiliaria de calidad. No somos un proyecto de una sola obra — somos una empresa con historia, con procesos y con un compromiso real con cada inversionista. <a href="https://www.gcisa.mx/" target="_blank" class="cisa-link">Conoce más sobre Grupo CISA →</a></p>
+</div>
+
+<!-- CTA FINAL -->
+<section id="contacto">
+  <div style="position:relative;z-index:2">
+    <div class="section-label reveal" style="color:var(--arena)">El momento es ahora</div>
+    <h2 class="section-title reveal">El tiempo para entrar<br>a precio de preventa<br><em>se agota.</em></h2>
+    <div class="divider reveal" style="background:var(--arena)"></div>
+    <p class="body-text reveal">Con más del 70% de avance en obra y unidades disponibles limitadas, agenda tu asesoría sin costo y descubre tu rendimiento proyectado.</p>
+    <div class="benefits-list">
+      <div class="benefit-item reveal"><span class="benefit-icon">→</span>Tu rendimiento proyectado según la tipología de tu interés</div>
+      <div class="benefit-item reveal reveal-d1"><span class="benefit-icon">→</span>Análisis honesto del mercado de renta vacacional en La Veleta</div>
+      <div class="benefit-item reveal reveal-d2"><span class="benefit-icon">→</span>Plan de pagos diseñado para tu perfil de inversión</div>
+    </div>
+  </div>
+  <div class="contacto-form reveal">
+    <div class="form-title">Agenda tu asesoría sin costo</div>
+    <div class="form-group">
+      <label>Nombre completo</label>
+      <input type="text" placeholder="Tu nombre"/>
+    </div>
+    <div class="form-group">
+      <label>Teléfono / WhatsApp</label>
+      <input type="tel" placeholder="+52 55 0000 0000"/>
+    </div>
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" placeholder="correo@ejemplo.com"/>
+    </div>
+    <div class="form-group">
+      <label>Tipología de interés</label>
+      <select>
+        <option value="">Selecciona una opción</option>
+        <option>Tulum — 48 m² desde $2.5 MDP</option>
+        <option>Uxmal — 54 m² desde $3.1 MDP</option>
+        <option>Calakmul — 65 m² desde $3.9 MDP</option>
+        <option>Tikal — 123 m² desde $6.1 MDP</option>
+        <option>Chichén Itzá — 135 m² PH desde $6.8 MDP</option>
+        <option>Aún no lo he decidido</option>
+      </select>
+    </div>
+    <button class="form-submit" id="formBtn">Solicitar mi asesoría →</button>
+    <p class="form-note">Sin compromiso · Sin presión · Con datos reales</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" class="nav-logo">ITZAÉ<span style="color:var(--arena)">·</span>TULUM</a>
+    <p>Departamentos en venta en La Veleta, Tulum. Un proyecto de Grupo CISA, 100% autofinanciado y diseñado para inversionistas que buscan rendimientos reales en el Caribe mexicano.</p>
+    <div class="social-row">
+      <a href="https://www.instagram.com/itzaetulum/" class="social-link" target="_blank">ig</a>
+      <a href="https://www.facebook.com/itzaetulum" class="social-link" target="_blank">fb</a>
+      <a href="https://www.youtube.com/@ItzaeTulum" class="social-link" target="_blank">yt</a>
+      <a href="https://www.tiktok.com/@itzae.tulum" class="social-link" target="_blank">tk</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Navegación</div>
+    <ul class="footer-links">
+      <li><a href="#auto">Por qué Itzaé</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#tipologias">Tipologías</a></li>
+      <li><a href="#datos">Rendimientos</a></li>
+      <li><a href="#avance">Avance de obra</a></li>
+      <li><a href="#contacto">Agendar asesoría</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Proyecto</div>
+    <ul class="footer-links">
+      <li><a href="#">Brochure digital</a></li>
+      <li><a href="#">Blog de inversión</a></li>
+      <li><a href="https://www.gcisa.mx/" target="_blank">Grupo CISA</a></li>
+      <li><a href="#">Aviso de privacidad</a></li>
+    </ul>
+  </div>
+  <div class="footer-contact">
+    <div class="footer-col-title">Contacto</div>
+    <p><a href="tel:+525534552642">+52 55 3455 2642</a></p>
+    <p><a href="tel:+525517964940">+52 55 1796 4940</a></p>
+    <p><a href="mailto:contacto@itzaetulum.com">contacto@itzaetulum.com</a></p>
+    <p style="margin-top:0.8rem">C. 14 Sur 102, La Veleta,<br>77760 Tulum, Q.R.</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 ITZAÉ Desarrollo Inmobiliario | Grupo CISA MX</p>
+  <a href="#">Aviso de privacidad</a>
+</div>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => obs.observe(el));
+
+  // Form
+  document.getElementById('formBtn').addEventListener('click', function() {
+    const name = document.querySelector('input[type="text"]').value.trim();
+    if (!name) { document.querySelector('input[type="text"]').focus(); return; }
+    this.textContent = '✓ Recibido — Te contactamos en menos de 2 horas';
+    this.style.background = 'var(--verde-lt)';
+    this.style.color = '#fff';
+    this.disabled = true;
+  });
+</script>
+</body>
+</html>
