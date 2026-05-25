@@ -1,0 +1,19 @@
+# Build artifacts (none — this is a static site)
+node_modules/
+dist/
+build/
+
+# Local files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# Working uploads (not needed in production)
+uploads/
+
+# Internal preview thumbnail
+.thumbnail
