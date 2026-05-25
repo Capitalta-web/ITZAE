@@ -445,7 +445,7 @@ function ContactForm() {
             Tu asesor leerá tu perfil y te contactará vía WhatsApp en menos de 2 horas con un análisis personalizado y los renders en alta resolución.
           </p>
           <a
-            href={`https://wa.me/525534552642?text=${encodeURIComponent('Hola, soy ' + data.name + '. Acabo de llenar el formulario de Itzaé Tulum y quisiera adelantar la conversación.')}`}
+            href={`https://wa.me/5517964940?text=${encodeURIComponent('Hola, soy ' + data.name + '. Acabo de llenar el formulario de Itzaé Tulum y quisiera adelantar la conversación.')}`}
             className="btn btn-primary"
             target="_blank"
             rel="noreferrer">
